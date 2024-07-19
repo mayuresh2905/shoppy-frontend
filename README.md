@@ -1,3 +1,11 @@
+# Shoppy: E-Commerce Web Application with admin panel and dashboard
+Shoppy is an e commerce web application with an admin dashboard panel which unable user to buy the products which are added to cart. The Admin dashboard is the USP of this project where admin can perform CRUD operations on product, edit the status of transactions and have a look into KPIs and stats about the application performance.
+## For admin access login through gmail with credentials
+E-mail:appabalvenkar29@gmail.com
+Password: Admin@2905
+
+
+
 # React + TypeScript + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
