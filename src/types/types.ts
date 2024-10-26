@@ -8,13 +8,19 @@ export type User = {
     _id: string;
   };
   
-  export interface Product  {
+  export type Product = {
     map: any;
     name: string;
     price: number;
     stock: number;
     category: string;
-    photo: string;
+    ratings: number;
+    numOfReviews: number;
+    description: string;
+    photos: {
+      url:string;
+      public_id:string;
+    }[];
     _id: string;
   };
   
@@ -134,5 +140,17 @@ export type User = {
   export type CouponType = {
     code: string;
     amount: number;
+    _id: string;
+  };
+
+  export type Review = {
+    rating: number;
+    comment: string;
+    product: string;
+    user: {
+      name: string;
+      photo: string;
+      _id: string;
+    };
     _id: string;
   };

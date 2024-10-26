@@ -85,7 +85,7 @@ const Orders = () => {
               {i.status}
             </span>
           ),
-          action: <Link to={`/admin/transaction/${i._id}`}>Manage</Link>,
+          action: <Link to={`/orders/${i._id}`}>view</Link>,
         }))
       );
   }, [data]);
