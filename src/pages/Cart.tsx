@@ -6,7 +6,7 @@ import { useSelector } from "react-redux";
 import { CartReducerInitialState } from "../types/reducer-types";
 import { CartItem } from "../types/types";
 import { useDispatch } from "react-redux";
-import { addToCart, calculatePrice, discountApplied, removeCartItem } from "../redux/reducer/cartReducer";
+import { addToCart, calculatePrice, discountApplied, removeCartItem, saveCoupon } from "../redux/reducer/cartReducer";
 import toast from "react-hot-toast";
 import axios from "axios";
 import { server } from "../redux/store";
@@ -61,6 +61,7 @@ const Cart = () => {
       })
       .catch(() => {
         dispatch(discountApplied(0));
+        dispatch(saveCoupon(couponCode));
         dispatch(calculatePrice());
         setIsValidCouponCode(false);
       });

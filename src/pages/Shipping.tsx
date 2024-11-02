@@ -4,17 +4,19 @@ import toast from "react-hot-toast";
 import { BiArrowBack } from "react-icons/bi";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { server } from "../redux/store";
+import { RootState, server } from "../redux/store";
 import { CartReducerInitialState } from "../types/reducer-types";
 import { saveShippingInfo } from "../redux/reducer/cartReducer";
 
 
 const Shipping = () => {
 
-  const { cartItems,total } = useSelector(
+  const { cartItems, coupon } = useSelector(
     (state: { cartReducer: CartReducerInitialState} ) =>
       state.cartReducer
-  )
+  );
+
+  const { user } = useSelector((state: RootState) => state.userReducer);
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -37,8 +39,10 @@ const Shipping = () => {
         dispatch(saveShippingInfo(shippingInfo));
         try {
 
-          const {data} = await axios.post(`${server}/api/v1/payment/create`,{
-            amount:total,
+          const {data} = await axios.post(`${server}/api/v1/payment/create?id=${user?._id}`,{
+            items: cartItems,
+            shippingInfo,
+            coupon
           },{
             headers:{
               "Content-Type":"application/json"
